@@ -46,7 +46,7 @@ class Register extends Component {
 
     return (
       <div className='container mt-5 mb-5 col-md-8'>
-        <h1 className='large text-primary text-center'>Sign Up</h1>
+        <h1 className='text-primary display-4 text-center'>Sign Up</h1>
         <p className='lead text-center'>
           <i className='fas fa-user'></i> Create Your Account
         </p>
@@ -99,7 +99,7 @@ class Register extends Component {
 }
 
 Register.propTypes = {
-  registeruser: PropTypes.func.isRequired,
+  registerUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };

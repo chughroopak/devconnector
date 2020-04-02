@@ -50,7 +50,7 @@ class Login extends Component {
     return (
       <div className='container mt-5 mb-5 col-md-8'>
         {/* <div className='alert alert-danger'>Invalid credentials</div> */}
-        <h1 className='large text-primary text-center'>Sign In</h1>
+        <h1 className='text-primary display-4 text-center'>Sign In</h1>
         <p className='lead text-center'>
           <i className='fas fa-user'></i> Sign into Your Account
         </p>
