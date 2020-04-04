@@ -176,7 +176,7 @@ router.delete(
   "/comment/:post_id/:comment_id",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    Post.findOne({ _id: req.params.post_id })
+    Post.findById(req.params.post_id)
       .then(post => {
         //check if comment exists
         if (

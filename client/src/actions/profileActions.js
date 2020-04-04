@@ -5,7 +5,8 @@ import {
   CLEAR_CURRENT_PROFILE,
   GET_ERRORS,
   SET_CURRENT_USER,
-  GET_PROFILES
+  GET_PROFILES,
+  CLEAR_ERRORS
 } from "./types";
 
 //get current profile
@@ -20,7 +21,7 @@ export const getCurrentProfile = () => dispatch => {
         payload: res.data
       })
     )
-    .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }));
+    .catch(err => dispatch({ type: GET_PROFILE, payload: null }));
 };
 
 //get current profile
@@ -35,7 +36,7 @@ export const getProfileByHandle = handle => dispatch => {
         payload: res.data
       })
     )
-    .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }));
+    .catch(err => dispatch({ type: GET_PROFILE, payload: null }));
 };
 
 //get all profiles
@@ -55,6 +56,7 @@ export const getProfiles = () => dispatch => {
 
 // create profile
 export const createProfile = (profileData, history) => dispatch => {
+  dispatch(clearErrors());
   axios
     .post("/api/profile", profileData)
     .then(res => history.push("/dashboard"))
@@ -68,6 +70,7 @@ export const createProfile = (profileData, history) => dispatch => {
 
 //Add experience
 export const addExperience = (expData, history) => dispatch => {
+  dispatch(clearErrors());
   axios
     .post("/api/profile/experience", expData)
     .then(res => history.push("/dashboard"))
@@ -81,6 +84,7 @@ export const addExperience = (expData, history) => dispatch => {
 
 //Add education
 export const addEducation = (eduData, history) => dispatch => {
+  dispatch(clearErrors());
   axios
     .post("/api/profile/education", eduData)
     .then(res => history.push("/dashboard"))
@@ -159,3 +163,7 @@ export const clearCurrentProfile = () => {
     type: CLEAR_CURRENT_PROFILE
   };
 };
+
+export const clearErrors = () => ({
+  type: CLEAR_ERRORS
+});

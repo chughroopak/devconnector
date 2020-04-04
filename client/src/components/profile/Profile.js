@@ -22,8 +22,8 @@ class Profile extends Component {
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (
-      nextProps.profile.loading &&
-      nextProps.errors.noprofile &&
+      !nextProps.profile.loading &&
+      nextProps.profile.profile === null &&
       prevState.mounted
     ) {
       nextProps.history.push("/not-found");
@@ -76,13 +76,11 @@ class Profile extends Component {
 }
 
 Profile.propTypes = {
-  profile: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  profile: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  profile: state.profile,
-  errors: state.errors
+  profile: state.profile
 });
 
 export default connect(mapStateToProps, { getProfileByHandle })(Profile);
