@@ -20,9 +20,25 @@ export const getCurrentProfile = () => dispatch => {
         payload: res.data
       })
     )
-    .catch(err => dispatch({ type: GET_PROFILE, payload: {} }));
+    .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }));
 };
 
+//get current profile
+export const getProfileByHandle = handle => dispatch => {
+  dispatch(setProfileLoading());
+
+  axios
+    .get(`/api/profile/handle/${handle}`)
+    .then(res =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      })
+    )
+    .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }));
+};
+
+//get all profiles
 export const getProfiles = () => dispatch => {
   dispatch(setProfileLoading());
 
@@ -94,7 +110,7 @@ export const deleteExperience = id => dispatch => {
     );
 };
 
-//delete experience
+//delete education
 export const deleteEducation = id => dispatch => {
   axios
     .delete(`/api/profile/education/${id}`)
