@@ -48,7 +48,7 @@ class Login extends Component {
     const { errors } = this.state;
 
     return (
-      <div className='container mt-5 mb-5 col-md-8'>
+      <div className='container mt-5 mb-5' style={{ height: "475px" }}>
         {/* <div className='alert alert-danger'>Invalid credentials</div> */}
         <h1 className='text-primary display-4 text-center'>Sign In</h1>
         <p className='lead text-center'>

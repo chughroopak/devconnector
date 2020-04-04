@@ -286,10 +286,9 @@ router.delete(
       { user: req.user.id },
       { useFindAndModify: false }
     ).then(() => {
-      User.findOneAndRemove(
-        { id: req.user.id },
-        { useFindAndModify: false }
-      ).then(() => res.json({ success: true }));
+      User.findByIdAndRemove(req.user.id, {
+        useFindAndModify: false
+      }).then(() => res.json({ success: true }));
     });
   }
 );
